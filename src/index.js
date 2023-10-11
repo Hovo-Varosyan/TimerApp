@@ -5,9 +5,11 @@ const { app, BrowserWindow } = require('electron');
 let win;
 
 function createWindow() {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
     win = new BrowserWindow({
-        width: "100%",
-        height: "100%",
+        width: width,
+        height: height,
         icon: path.join(__dirname, 'public/images/icon.ico')
     });
     win.loadURL(url.format({
@@ -16,8 +18,11 @@ function createWindow() {
         slashes: true
     }));
 
-    mainWindow.setMenu(null);
-
+    win.setMenu(null);
+    win.on('minimize', (event) => {
+        event.preventDefault(); 
+        win.hide(); 
+      });
     win.on('closed', () => {
     win = null;
 });

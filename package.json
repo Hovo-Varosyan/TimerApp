@@ -37,7 +37,7 @@
     "win":{
       "target":"nsis",
       "icon":"./public/images/icon.ico",
-      "requestedExecutionLevel":"requireAdministrator"
+      "requestedExecutionLevel":"highestAvailable"
     },
     "nsis":{
       "installerIcon":"./public/images/setupicon.ico",
