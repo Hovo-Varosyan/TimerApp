@@ -11,6 +11,13 @@
   },
   "build": {
     "appId": "myArmTimer",
+    "publish": 
+      {
+        "provider": "github",
+        "owner": "Hovo-Varosyan",
+        "repo": "TimerApp",
+        "releaseType": "release"
+      },
     "mac":{
       "category":"Utility",
       "icon":"./public/images/icon.ico"
@@ -21,7 +28,7 @@
       "synopsis":"im pordznakan jamacuycn",
       "category":"Utility",
       "desktop": {
-        "name": "MyApp",
+        "name": "My Timer App",
         "comment": "A sample application",
         "genericName": "Utility",
         "terminal": false
