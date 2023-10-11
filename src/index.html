@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <main class="main justify-center" id="maindoc">
+        <section class="timesection">
+            <div class="clear"><button class="clearbutton" id="timeclear">Clear</button> </div>
+                <div class="sample"><button class="samplebutton" id="sampletime">Sample</button> </div>
+            <div class="border">
+                
+                <div class="tim">
+                    <div class="timer">
+                        <p class="timep" id="timer">00:00:00</p>
+                    </div>
+                    <div class="startdiv" id="buttondiv">
+                        <button class="start" id="timerstart">Start</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="timtable none" id="timertable">
+        </section>
+        <section class="table"><button class="samplebuttntb" id="sampletable"></button></section>
+    </main>
+    <script src="./javascript/logic.js"></script>
+    <script>
+        require('../render.js')
+    </script>
+</body>
+
+</html>

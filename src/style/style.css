@@ -1,0 +1,435 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+        background-color: black;
+}
+.main{
+    position: relative;
+    font-size: 22px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-between;
+}
+.justify-center{
+    justify-content: center;
+}
+.justify-between{
+    justify-content: space-between;
+}
+.tim{
+    position: relative;
+    background-color: black;
+    height: 95%;
+    width: 95%;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.timer{
+    width: 70%;
+    height: 20%;
+    background-color: rgb(9, 3, 42);
+    padding: 10px;
+}
+.border{
+    position: relative;
+    z-index: 50;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background:radial-gradient(ellipse at 100% 100%, rgba(10, 0, 77, 1) 59%, rgba(157, 157, 157, 1) 90%, rgba(0, 0, 77, 1) 9%);
+    border-radius: 50%;
+    display: flex;
+    box-shadow: 0px 0px 40px rgb(0, 0, 54);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.clear{
+    padding: 3px;
+    box-sizing: content-box;
+    position: absolute;
+    right: 5%;
+    top: 54px;
+    width: 10%;
+    height: 5%;
+    transform: rotate(315deg);
+    background-image:radial-gradient(ellipse at 50% 50%, rgba(10, 0, 77, 1) 24%, rgba(157, 157, 157, 1) 24%, rgba(0, 0, 77, 1) 100%); 
+    box-shadow: 0px 0px 50px rgb(0, 0, 54);
+}
+.timesection{
+    position: relative;
+    width: 40%;
+    aspect-ratio: 1/1;
+}
+.clearbutton{
+    font-size: 18px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: rgb(0, 0, 140);
+    text-shadow: 0 0 1px rgb(0, 0, 140);
+    background-color: black;
+}
+.start{
+    width: 100%;
+    aspect-ratio: 1/1;
+    color: rgb(0, 0, 140);
+     border: none;
+     border-radius: 50%;
+    background-color: black;
+    font-size: 24px;
+    box-shadow: 0px 0px 40px rgb(0, 0, 54);
+}
+.startdiv{
+     height: 15%;
+     aspect-ratio: 1/1;
+     position: absolute;
+     border-radius: 50%;    
+     border: 3px solid  rgb(10, 0, 78);
+     bottom: 10px;
+     box-shadow: 0px 0px 40px rgb(0, 0, 54);
+
+}
+.sample{
+    padding: 3px;
+    box-sizing: content-box;
+    position: absolute;
+    left: 3%;
+    top: 5%;
+    width: 15%;
+    height: 5%;
+    transform: rotate(45deg);
+    background-image:radial-gradient(ellipse at 50% 50%, rgba(10, 0, 77, 1) 24%, rgba(157, 157, 157, 1) 24%, rgba(0, 0, 77, 1) 100%); 
+    box-shadow: 0px 0px 50px rgb(0, 0, 54);
+}
+.cleardiv{
+    height: 10%;
+}
+.samplebutton{
+    padding: 3px;
+    font-size: 18px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: rgb(0, 0, 140);
+    text-shadow: 0 0 1px rgb(0, 0, 140);
+    background-color: black;
+}
+.table{
+    position: absolute;
+    right: 0;
+    top: 15%;
+    width: 30px;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    z-index: 85;
+    overflow: hidden;
+}
+.samplebuttntb{
+    width:60%;
+    height:60%;
+    background-color:rgba(10, 0, 77, 1) ;
+    transform: rotate(43deg);
+    margin-left: 26px;
+    margin-top: 10px;
+}
+.timep{
+    text-align: center;
+width: 100%;
+height: 100%;
+font-size: 72px;
+}
+.timtable{
+    position: relative;
+    width: 40%;
+    aspect-ratio: 1/1;
+    background-color:black;
+    border: 2px solid  rgba(0, 0, 77, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}   
+.none{
+    display: none;
+
+}
+.block{
+    display: block;
+}
+
+.tabletime{
+    width: 100%;
+    border-spacing: 0px; 
+}
+ td{
+ border-bottom: 1px solid  rgba(0, 0, 77, 1);
+padding: 5px;
+color: rgb(0, 0, 140);
+}
+.clesamp{
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    border: none;
+    border-top:2px solid rgba(0, 0, 77, 1) ;
+    background-color: black;
+    color: rgb(0, 0, 140);
+    box-shadow: 0px 0px 50px rgb(0, 0, 54);
+    bottom: 0;
+    z-index: 15;
+}
+.overflow{
+    overflow: auto;
+}
+@media screen and (min-width:320px) and (max-width:400px){
+    .timep{
+        font-size:2rem;
+    }
+    .main{
+        flex-direction: column;
+    }
+    .timesection{
+        width: 80%;
+        margin-bottom: 35px;
+        justify-content: space-around;
+    }
+    .timer{
+        padding-top: 5px;
+    }
+
+    .start{
+        font-size:1rem;
+    }
+    .startdiv{
+        height: 22%;
+    }
+    .clear{
+        width: 19%;
+        height: 19%;
+        border-radius: 50%;
+        z-index: 85;
+        top: unset;
+        bottom: 16%;
+        transform: rotate(0deg);
+        right: 17%;
+        background:rgb(0, 0, 54) ;
+    }
+    .clearbutton{
+        border-radius: 50%;
+        font-size: 0.9rem;
+    }
+    .sample{
+        top: unset;
+        bottom:16%;
+        transform: rotate(0deg);
+        left: 17%;
+        z-index: 85; 
+        border-radius: 50%;
+        width: 20%;
+        height: 20%;
+        background:rgb(0, 0, 54) ;
+    }
+    .samplebutton{
+       border-radius: 50%;     
+       font-size: 0.6rem;
+
+    }
+    .timtable{
+        width: 100%;
+    }
+    .clesamp{
+        font-size: 1.1rem;
+    }
+    
+
+}
+@media screen and (min-width:401px) and (max-width:540px){
+    .timep{
+        font-size:2.7rem;
+    }
+    .main{
+        flex-direction: column;
+    }
+    .timesection{
+        width: 75%;
+        margin-bottom: 35px;
+        justify-content: space-around;
+    }
+    .timer{
+        padding: 5px;
+    }
+
+    .start{
+        font-size:1.1rem;
+    }
+    .startdiv{
+        height: 22%;
+    }
+    .clear{
+        width: 19%;
+        height: 19%;
+        border-radius: 50%;
+        z-index: 85;
+        top: unset;
+        bottom: 16%;
+        transform: rotate(0deg);
+        right: 17%;
+        background:rgb(0, 0, 54) ;
+    }
+    .clearbutton{
+        border-radius: 50%;
+        font-size: 1rem;
+    }
+    .sample{
+        top: unset;
+        bottom:16%;
+        transform: rotate(0deg);
+        left: 17%;
+        z-index: 85; 
+        border-radius: 50%;
+        width: 20%;
+        height: 20%;
+        background:rgb(0, 0, 54) ;
+    }
+    .samplebutton{
+       border-radius: 50%;     
+       font-size:0.8rem;
+
+    }
+    .timtable{
+        width: 100%;
+    }
+    .clesamp{
+        font-size: 1.1rem;
+    }
+    
+
+}
+@media screen and (min-width:541px) and (max-width:700px) {
+    .main{
+        flex-direction: column;
+    }
+    .timesection{
+        width: 70%;
+        margin-bottom: 35px;
+        justify-content: space-around;
+    }
+    .timep{
+        font-size: 3.3rem;
+    }
+    .start{
+        font-size: 22px;
+    }
+    .startdiv{
+        height: 22%;
+    }
+    .clear{
+        font-size: 16px;
+        width: 19%;
+        height: 19%;
+        border-radius: 50%;
+        z-index: 85;
+        top: unset;
+        bottom: 16%;
+        transform: rotate(0deg);
+        right: 17%;
+        background:rgb(0, 0, 54) ;
+    }
+    .clearbutton{
+        border-radius: 50%;
+    }
+    .sample{
+        top: unset;
+        bottom:16%;
+        transform: rotate(0deg);
+        left: 17%;
+        z-index: 85; 
+        border-radius: 50%;
+        width: 20%;
+        height: 20%;
+        background:rgb(0, 0, 54) ;
+    }
+    .samplebutton{
+       border-radius: 50%;     
+       font-size: 16px;
+     
+    }
+    .timtable{
+        width: 100%;
+    }
+    .cleardiv{
+        height: 16%;
+    }
+    .clesamp{
+        font-size: 1.4rem;
+    }
+    
+}
+@media screen  and (min-width:701px) and (max-width:1500px){
+    .timesection{
+        width: 40%;
+        margin-bottom: 35px;
+        justify-content: space-around;
+    }
+    .timep{
+        font-size: 2.5rem;
+    }
+    .timer{
+        padding: 1px;
+    }
+    .start{
+        font-size:1.1rem;
+    }
+    .startdiv{
+        height: 22%;
+    }
+    .clear{
+        font-size: 16px;
+        width: 19%;
+        height: 19%;
+        border-radius: 50%;
+        z-index: 85;
+        top: unset;
+        bottom: 16%;
+        transform: rotate(0deg);
+        right: 17%;
+        background:rgb(0, 0, 54) ;
+    }
+    .clearbutton{
+        border-radius: 50%;
+        font-size: 1.1rem;
+    }
+    .sample{
+        top: unset;
+        bottom:16%;
+        transform: rotate(0deg);
+        left: 17%;
+        z-index: 85; 
+        border-radius: 50%;
+        width: 20%;
+        height: 20%;
+        background:rgb(0, 0, 54) ;
+    }
+    .samplebutton{
+       border-radius: 50%;     
+       font-size:0.8rem;
+     
+    }
+
+    .cleardiv{
+        height: 16%;
+    }
+    .clesamp{
+        font-size: 1.4rem;
+    }
+    
+}
