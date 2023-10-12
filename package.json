@@ -3,30 +3,30 @@
   "version": "1.0.0",
   "description": "im pordznakan jamacuycn",
   "main": "./src/index.js",
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "start": "nodemon --exec electron ./src/index.js"
   },
   "build": {
     "appId": "myArmTimer",
-    "publish": 
-      {
-        "provider": "github",
-        "owner": "Hovo-Varosyan",
-        "repo": "TimerApp",
-        "releaseType": "release"
-      },
-    "mac":{
-      "category":"Utility",
-      "icon":"./public/images/icon.ico"
+    "productName": "My Timer",
+    "publish": {
+      "provider": "github",
+      "owner": "Hovo-Varosyan",
+      "repo": "TimerApp",
+      "releaseType": "release"
     },
-    "linux":{
-      "maintainer":"Hovo",
-      "icon":"./public/images/icon.ico",
-      "synopsis":"im pordznakan jamacuycn",
-      "category":"Utility",
+    "mac": {
+      "category": "Utility",
+      "icon": "./public/images/icon.ico"
+    },
+    "linux": {
+      "maintainer": "Hovo",
+      "icon": "./public/images/icon.ico",
+      "synopsis": "im pordznakan jamacuycn",
+      "category": "Utility",
       "desktop": {
         "name": "My Timer App",
         "comment": "A sample application",
@@ -34,31 +34,30 @@
         "terminal": false
       }
     },
-    "win":{
-      "target":"nsis",
-      "icon":"./public/images/icon.ico",
-      "requestedExecutionLevel":"highestAvailable"
+    "win": {
+      "target": "nsis",
+      "icon": "./public/images/icon.ico",
+      "requestedExecutionLevel": "asInvoker"
     },
-    "nsis":{
-      "installerIcon":"./public/images/setupicon.ico",
-      "uninstallerIcon":"./public/images/setupicon.ico",
-      "uninstallDisplayName":"inchu eq jnjum im cragirn",
-      "license":"./public/license.txt",
-      "oneClick":false,
-      "allowToChangeInstallationDirectory":false,
-      "createStartMenuShortcut":true,
-      "shortcutName":"My Timer"
-
+    "nsis": {
+      "installerIcon": "./public/images/setupicon.ico",
+      "uninstallerIcon": "./public/images/setupicon.ico",
+      "uninstallDisplayName": "inchu eq jnjum im cragirn",
+      "license": "./public/license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createStartMenuShortcut": true,
+      "shortcutName": "My Timer"
     }
   },
   "keywords": [],
-  "author": "",
+  "author": "Hovo",
   "license": "ISC",
   "devDependencies": {
-        "electron": "^27.0.0",
+    "electron": "^27.0.0",
     "electron-builder": "^24.6.4"
   },
   "dependencies": {
-
+    "nodemon": "^3.0.1"
   }
 }
