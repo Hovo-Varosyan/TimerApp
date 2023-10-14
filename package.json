@@ -1,6 +1,6 @@
 {
   "name": "timerlocal",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "im pordznakan jamacuycn",
   "main": "./src/index.js",
   "scripts": {

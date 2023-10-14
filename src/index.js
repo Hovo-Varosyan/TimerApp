@@ -79,6 +79,18 @@ function createWindow() {
             if (returnValue.response === 0) autoUpdater.quitAndInstall()
         });
     });
+
+    autoUpdater.on('error', (error) => {
+        // Обработайте ошибку, выведите информацию об ошибке в консоль
+        const dialogOpts = {
+            type: `info`,
+            buttons: [`ok`],
+            title: `Application Update error`,
+            message: process.platform === `win32` ? releaseNotes : releaseName,
+            detail:error.message
+        };
+        dialog.showMessageBox(dialogOpts)
+      });
 }
 
 function WindowSize() {
