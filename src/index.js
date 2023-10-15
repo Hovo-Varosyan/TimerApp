@@ -7,12 +7,9 @@ const { autoUpdater } = require(`electron-updater`)
 let win;
 
 function createWindow() {
-    autoUpdater.autoDownload = true;
-    autoUpdater.allowPrerelease = true; // Разрешить загрузку предварительных версий (опционально)
-    autoUpdater.devMode = true; // Включить проверку обновлений в режиме разработки
+
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
-    autoUpdater.checkForUpdates()
 
     win = new BrowserWindow({
         width: width,
@@ -25,7 +22,7 @@ function createWindow() {
         protocol: `file`,
         slashes: true
     }));
-
+    win.webContents.openDevTools()
     win.maximize()
     win.setMenu(null);
 
@@ -54,43 +51,6 @@ function createWindow() {
     win.on(`closed`, () => {
         win = null;
     });
-
-    autoUpdater.on(`update-available`, (_event, releaseNotes, releaseName) => {
-        const dialogOpts = {
-            type: `info`,
-            buttons: [`Ok`],
-            title: `Update Available`,
-            message: process.platform === `win32` ? releaseNotes : releaseName,
-            detail: `A new version download started. The app will be restarted to install the update.`
-        };
-        dialog.showMessageBox(dialogOpts);
-
-        updateInterval = null;
-    });
-    autoUpdater.on(`update-downloaded`, (_event, releaseNotes, releaseName) => {
-        const dialogOpts = {
-            type: `info`,
-            buttons: [`Restart`, `Later`],
-            title: `Application Update`,
-            message: process.platform === `win32` ? releaseNotes : releaseName,
-            detail: `A new version has been downloaded. Restart the application to apply the updates.`
-        };
-        dialog.showMessageBox(dialogOpts).then((returnValue) => {
-            if (returnValue.response === 0) autoUpdater.quitAndInstall()
-        });
-    });
-
-    autoUpdater.on('error', (error) => {
-        // Обработайте ошибку, выведите информацию об ошибке в консоль
-        const dialogOpts = {
-            type: `info`,
-            buttons: [`ok`],
-            title: `Application Update error`,
-            message: process.platform === `win32` ? releaseNotes : releaseName,
-            detail:error.message
-        };
-        dialog.showMessageBox(dialogOpts)
-      });
 }
 
 function WindowSize() {
@@ -116,7 +76,61 @@ function WindowSize() {
     win.setAlwaysOnTop(true, `normal`, `bellow`);
 }
 
-app.on(`ready`, createWindow);
+app.on(`ready`, () => {
+   
+    createWindow()
+    autoUpdater.autoDownload = false;
+    autoUpdater.allowPrerelease = true;
+    autoUpdater.devMode = true;
+    autoUpdater.checkForUpdates();
+    autoUpdater.on(`update-available`, (_event) => {
+
+        const dialogOpts = {
+            type: `info`,
+            buttons: [`Ok`],
+            title: `Update Available`,
+            message: "messages",
+            detail: `A new version download started. The app will be restarted to install the update.`
+        };
+        dialog.showMessageBox(dialogOpts);
+
+        updateInterval = null;
+    });
+    autoUpdater.on(`update-downloaded`, (_event) => {
+        const dialogOpts = {
+            type: `info`,
+            buttons: [`Restart`, `Later`],
+            title: `Application Update`,
+            message: "messages",
+            detail: `A new version has been downloaded. Restart the application to apply the updates.`
+        };
+        dialog.showMessageBox(dialogOpts).then((returnValue) => {
+            if (returnValue.response === 0) autoUpdater.quitAndInstall()
+        });
+    });
+    autoUpdater.on('update-not-available', () => {
+        const dialogOpts = {
+            type: `info`,
+            buttons: [`ok`],
+            title: `Application Update error`,
+            message: 'not new verssion'
+        }
+
+        dialog.showMessageBox(dialogOpts)
+    })
+
+    autoUpdater.on('error', (error) => {
+
+        const dialogOpts = {
+            type: `info`,
+            buttons: [`ok`],
+            title: `Application Update error`,
+            message: error,
+            detail: error.message
+        };
+        dialog.showMessageBox(dialogOpts)
+    });
+});
 
 
 
