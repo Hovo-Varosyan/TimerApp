@@ -10,10 +10,7 @@
     "start": "nodemon --exec electron ./src/index.js"
   },
   "repository": "https://github.com/Hovo-Varosyan/TimerApp",
-  "publish": {
-    "provider": "github",
-    "releaseType": "release"
-  },
+ 
   "build": {
     "appId": "myArmTimer",
     "productName": "My Timer",
@@ -21,7 +18,8 @@
       "provider": "github",
       "owner": "Hovo-Varosyan",
       "repo": "TimerApp",
-      "releaseType": "release"
+      "releaseType": "release",
+      "token":"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"
     },
     "mac": {
       "category": "Utility",
@@ -63,6 +61,7 @@
     "electron-builder": "^24.6.4"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "electron-updater": "^6.1.4",
     "nodemon": "^3.0.1"
   }

@@ -22,10 +22,9 @@ function createWindow() {
         protocol: `file`,
         slashes: true
     }));
-    win.webContents.openDevTools()
     win.maximize()
     win.setMenu(null);
-
+    win.webContents.openDevTools()
     win.on(`resize`, () => {
 
 
@@ -56,10 +55,12 @@ function createWindow() {
             message: "messages",
             detail: `A new version download started. The app will be restarted to install the update.`
         };
-        dialog.showMessageBox(dialogOpts);
 
-        updateInterval = null;
+
+        dialog.showMessageBoxSync(dialogOpts);
+
     });
+
     autoUpdater.on(`update-downloaded`, (_event) => {
         const dialogOpts = {
             type: `info`,
@@ -68,9 +69,24 @@ function createWindow() {
             message: "messages",
             detail: `A new version has been downloaded. Restart the application to apply the updates.`
         };
-        dialog.showMessageBox(dialogOpts).then((returnValue) => {
+
+
+        dialog.showMessageBoxSync(dialogOpts).then((returnValue) => {
             if (returnValue.response === 0) autoUpdater.quitAndInstall()
         });
+    });
+    autoUpdater.on('download-progress', (progressObj) => {
+        const { bytesPerSecond, percent, transferred, total } = progressObj;
+        
+        const message = `Загрузка: ${percent}% (${transferred}/${total} байт, ${bytesPerSecond} байт/сек)`;
+        
+        dialog.showMessageBox({
+            type: 'info',
+            buttons: [],
+            title: 'Прогресс загрузки',
+            message
+        });
+        
     });
     autoUpdater.on('update-not-available', () => {
         const dialogOpts = {
@@ -80,19 +96,21 @@ function createWindow() {
             message: 'not new verssion'
         }
 
-        dialog.showMessageBox(dialogOpts)
+        dialog.showMessageBoxSync(dialogOpts)
     })
 
     autoUpdater.on('error', (error) => {
 
         const dialogOpts = {
-            type: `info`,
+            type: `error`,
             buttons: [`ok`],
             title: `Application Update error`,
-            message: error,
-            detail: error.message
+            message: error.message,
+            detail: error.stack || ''
         };
-        dialog.showMessageBox(dialogOpts)
+
+
+        dialog.showMessageBoxSync(dialogOpts)
     });
 
     win.on(`closed`, () => {
@@ -109,11 +127,10 @@ function WindowSize() {
         win.setBounds({ x, y, width, height })
     }
     else {
-        if (!x >= 45) {
+        if (x < 45) {
             x = 45
-
         }
-        if (y >= 45) {
+        if (y < 45) {
             y = 45
         }
         win.setBounds({ x, y, width, height })
@@ -123,14 +140,20 @@ function WindowSize() {
     win.setAlwaysOnTop(true, `normal`, `bellow`);
 }
 
-app.on(`ready`, () => {
-   
+app.on(`ready`, async () => {
+
     createWindow()
-    autoUpdater.autoDownload = false;
-    autoUpdater.allowPrerelease = true;
-    autoUpdater.devMode = true;
-    autoUpdater.checkForUpdates();
-    
+    try {
+        autoUpdater.autoDownload = false;
+        autoUpdater.allowPrerelease = true;
+        autoUpdater.devMode = true;
+        await autoUpdater.checkForUpdates()
+
+    } catch (e) {
+        dialog.showMessageBoxSync(e)
+    }
+
+
 });
 
 
